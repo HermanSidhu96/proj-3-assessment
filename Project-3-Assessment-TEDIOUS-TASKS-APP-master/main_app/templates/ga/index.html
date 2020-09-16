@@ -1,0 +1,32 @@
+{% if tasks %}
+    <table>
+    {% for task in tasks %}
+        <tr> <td>{{task.description}}</td>
+            <td>{{task.time}}</td>
+            <td>{{task.person}}</td>
+            <td>{{task.name}}</td>
+
+        </tr>
+        
+
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<h1>Tedious Tasks</h1>
+<h3>No Tasks Exist</hr>
+<br></br>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form class="label" action="/main_app/" method="post">
+    {% csrf_token %}
+    <label for="name"></label>
+    <input id="name" type="text" name="name" value="">name</input>
+    <input id="description" type="text" name="description" value="">description</input>
+    <input id="time" type="text" name="time" value="">time</input>
+    <input id="person" type="text" name="person" value="">Person</input>
+    <input type="submit" value="OK">
+</form>
